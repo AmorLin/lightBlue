@@ -12,6 +12,9 @@
 		32ED938A1EEE660F0053E211 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32ED93881EEE660F0053E211 /* LaunchScreen.storyboard */; };
 		32ED939A1EEE6BAC0053E211 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32ED93991EEE6BAC0053E211 /* mainViewController.m */; };
 		32ED93A11EEE703F0053E211 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32ED93A01EEE703F0053E211 /* AppDelegate.m */; };
+		32FB9B4E1EEE7C97003FB2C4 /* blueToothManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FB9B4D1EEE7C97003FB2C4 /* blueToothManagerVC.m */; };
+		32FB9B541EEE8BAA003FB2C4 /* blueToothProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FB9B531EEE8BAA003FB2C4 /* blueToothProtocol.m */; };
+		32FB9B581EEE9786003FB2C4 /* blueToothPeripheralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FB9B571EEE9786003FB2C4 /* blueToothPeripheralCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,13 @@
 		32ED93A21EEE70770053E211 /* Marco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Marco.h; sourceTree = "<group>"; };
 		32ED93A31EEE70BE0053E211 /* ModelConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelConstants.h; sourceTree = "<group>"; };
 		32ED93A41EEE720B0053E211 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		32FB9B4C1EEE7C97003FB2C4 /* blueToothManagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blueToothManagerVC.h; sourceTree = "<group>"; };
+		32FB9B4D1EEE7C97003FB2C4 /* blueToothManagerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = blueToothManagerVC.m; sourceTree = "<group>"; };
+		32FB9B4F1EEE803D003FB2C4 /* UIConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIConstants.h; sourceTree = "<group>"; };
+		32FB9B521EEE8BAA003FB2C4 /* blueToothProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blueToothProtocol.h; sourceTree = "<group>"; };
+		32FB9B531EEE8BAA003FB2C4 /* blueToothProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = blueToothProtocol.m; sourceTree = "<group>"; };
+		32FB9B561EEE9786003FB2C4 /* blueToothPeripheralCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blueToothPeripheralCell.h; sourceTree = "<group>"; };
+		32FB9B571EEE9786003FB2C4 /* blueToothPeripheralCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = blueToothPeripheralCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +94,7 @@
 		32ED93911EEE6B1D0053E211 /* blueTooth */ = {
 			isa = PBXGroup;
 			children = (
+				32FB9B511EEE8B88003FB2C4 /* Model */,
 				32ED93921EEE6B1D0053E211 /* Controller */,
 				32ED93931EEE6B1D0053E211 /* View */,
 			);
@@ -93,6 +104,8 @@
 		32ED93921EEE6B1D0053E211 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				32FB9B4C1EEE7C97003FB2C4 /* blueToothManagerVC.h */,
+				32FB9B4D1EEE7C97003FB2C4 /* blueToothManagerVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -100,6 +113,8 @@
 		32ED93931EEE6B1D0053E211 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				32FB9B561EEE9786003FB2C4 /* blueToothPeripheralCell.h */,
+				32FB9B571EEE9786003FB2C4 /* blueToothPeripheralCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -150,8 +165,18 @@
 			children = (
 				32ED93A21EEE70770053E211 /* Marco.h */,
 				32ED93A31EEE70BE0053E211 /* ModelConstants.h */,
+				32FB9B4F1EEE803D003FB2C4 /* UIConstants.h */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		32FB9B511EEE8B88003FB2C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				32FB9B521EEE8BAA003FB2C4 /* blueToothProtocol.h */,
+				32FB9B531EEE8BAA003FB2C4 /* blueToothProtocol.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,8 +251,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				32ED939A1EEE6BAC0053E211 /* mainViewController.m in Sources */,
+				32FB9B4E1EEE7C97003FB2C4 /* blueToothManagerVC.m in Sources */,
+				32FB9B581EEE9786003FB2C4 /* blueToothPeripheralCell.m in Sources */,
 				32ED937C1EEE660F0053E211 /* main.m in Sources */,
 				32ED93A11EEE703F0053E211 /* AppDelegate.m in Sources */,
+				32FB9B541EEE8BAA003FB2C4 /* blueToothProtocol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,10 +373,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/wlinlin/Desktop/lightBlue/lightBlue/lightBlue/PrefixHeader.pch;
 				INFOPLIST_FILE = lightBlue/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "llwang-ideabinder.com.lightBlue";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -360,10 +389,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/wlinlin/Desktop/lightBlue/lightBlue/lightBlue/PrefixHeader.pch;
 				INFOPLIST_FILE = lightBlue/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "llwang-ideabinder.com.lightBlue";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -386,6 +416,7 @@
 				32ED93901EEE660F0053E211 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

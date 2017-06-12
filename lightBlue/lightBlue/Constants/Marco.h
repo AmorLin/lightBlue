@@ -9,5 +9,6 @@
 #ifndef Marco_h
 #define Marco_h
 
+#define strform(x) [NSString stringWithFormat:@"%@",x] 
 
 #endif /* Marco_h */
