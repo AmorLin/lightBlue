@@ -16,5 +16,6 @@
 #import "ModelConstants.h"
 #import "UIConstants.h"
 #import "Marco.h"
+#import "FDBaseViewController.h"
 
 #endif /* PrefixHeader_pch */

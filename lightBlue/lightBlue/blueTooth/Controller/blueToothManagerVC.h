@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface blueToothManagerVC : UIViewController
+@interface blueToothManagerVC : FDBaseViewController
 
 -(void)connectPeripheralWithIndex:(NSInteger)index;
 

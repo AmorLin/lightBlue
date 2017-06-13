@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32429B781EEFB80E003CFAFF /* FDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32429B771EEFB80E003CFAFF /* FDBaseViewController.m */; };
 		32ED937C1EEE660F0053E211 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32ED937B1EEE660F0053E211 /* main.m */; };
 		32ED93871EEE660F0053E211 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32ED93861EEE660F0053E211 /* Assets.xcassets */; };
 		32ED938A1EEE660F0053E211 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32ED93881EEE660F0053E211 /* LaunchScreen.storyboard */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32429B761EEFB80E003CFAFF /* FDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDBaseViewController.h; sourceTree = "<group>"; };
+		32429B771EEFB80E003CFAFF /* FDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDBaseViewController.m; sourceTree = "<group>"; };
 		32ED93771EEE660F0053E211 /* lightBlue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lightBlue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32ED937B1EEE660F0053E211 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32ED93861EEE660F0053E211 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +56,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32429B751EEFB7F5003CFAFF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				32429B761EEFB80E003CFAFF /* FDBaseViewController.h */,
+				32429B771EEFB80E003CFAFF /* FDBaseViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		32ED936E1EEE660E0053E211 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +171,7 @@
 		32ED939D1EEE70150053E211 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				32429B751EEFB7F5003CFAFF /* Controller */,
 				32F444541EEF8CFB0063453F /* view */,
 			);
 			path = Common;
@@ -268,6 +281,7 @@
 				32FB9B581EEE9786003FB2C4 /* blueToothPeripheralCell.m in Sources */,
 				32ED937C1EEE660F0053E211 /* main.m in Sources */,
 				32F444571EEF8D250063453F /* FDAlertView.m in Sources */,
+				32429B781EEFB80E003CFAFF /* FDBaseViewController.m in Sources */,
 				32ED93A11EEE703F0053E211 /* AppDelegate.m in Sources */,
 				32FB9B541EEE8BAA003FB2C4 /* blueToothProtocol.m in Sources */,
 			);

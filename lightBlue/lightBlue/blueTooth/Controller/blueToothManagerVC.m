@@ -14,9 +14,9 @@
     CBCentralManager *manager;
     UITableView *tableView;
 }
+
 @property (strong , nonatomic) blueToothProtocol *protocol;
 @property (strong, nonatomic) NSMutableArray<CBPeripheral *> *peripheralArray;//已扫描到的设备
-
 @property (nonatomic,strong) FDAlertView *alert;
 @end
 
@@ -24,25 +24,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     manager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue() options:nil];
     [self setUI];
 }
 
--(void)setUI{
+-(void)setUI{ 
     [self setTableView];
     [self setBottomView];
 }
 
 -(void)setTableView{
-    tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 300, 550) style:UITableViewStyleGrouped];
+    //pop控制器的大小（300,550）height = 550 - navheight - bottomheight
+    tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 44, 300, 466) style:UITableViewStyleGrouped];
     tableView.delegate = self.protocol;
     tableView.dataSource = self.protocol;
     [self.view addSubview:tableView];
 }
 
 -(void)setBottomView{
-    UIButton *refreshButton = [[UIButton alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(tableView.frame) - 40, CGRectGetWidth(tableView.frame), 40)];
+    UIButton *refreshButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 510, CGRectGetWidth(tableView.frame), 40)];
     [refreshButton setTitle:@"重新扫描" forState:UIControlStateNormal];
     [refreshButton addTarget:self action:@selector(refreshScanPeripheral) forControlEvents:UIControlEventTouchUpInside];
     [refreshButton setTitleColor:kBlackColor forState:UIControlStateNormal];
@@ -94,7 +94,7 @@
 -(void)connectPeripheralWithIndex:(NSInteger)index{
     CBPeripheral *peripheral=(CBPeripheral *)self.peripheralArray[index];
     if (peripheral.state == CBPeripheralStateConnected) {
-        [self.alert showRemindWithCancelButton:@"已连接成功"];
+        [self.alert showRemind:@"已连接成功"];
     }else{
          [self.alert showRemindWithCancelButton:@"正在连接,请稍后...."];
     }
@@ -143,7 +143,7 @@
     }
 }
 
-//发现特征时调用,由几个服务,这个方法就会调用几次
+//发现特征时调用,有几个服务,这个方法就会调用几次
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
     if (error) {
         NSLog(@"扫描特征出错:%@", [error localizedDescription]);
@@ -158,23 +158,22 @@
         [peripheral discoverDescriptorsForCharacteristic:characteristic];
         // 获取特征的值
         [peripheral readValueForCharacteristic:characteristic];
+        //订阅一个特征的值
+        [peripheral setNotifyValue:YES forCharacteristic:characteristic];
         //        }
     }
 }
-/*
+
  //6.从外围设备读数据
  - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
  {
  //    NSLog(@"从外围设备读数据== %@",characteristic.value);
- NSData *data = characteristic.value;
- if (data != nil) {
- NSString *str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
- NSLog(@"从外围设备读数据== %@",str);
- }
- 
- }
- 
- */
+     NSData *data = characteristic.value;
+     if (data != nil) {
+         NSString *str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+         NSLog(@"从外围设备读数据== %@",str);
+     }
+}
 
 // 更新特征的描述的值的时候会调用
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForDescriptor:(CBDescriptor *)descriptor error:(NSError *)error
@@ -182,14 +181,26 @@
     [peripheral readValueForDescriptor:descriptor];
 }
 
+-(void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
+    NSLog(@"订阅一个特征值");
+}
+
+
+
+/*
 // 更新特征的value的时候会调用
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     for (CBDescriptor *descriptor in characteristic.descriptors) {
         [peripheral readValueForDescriptor:descriptor];
+        NSData *data = characteristic.value;
+        if (data != nil) {
+            NSString *str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"从外围设备读数据== %@",str);
+        }
     }
 }
-
+*/
 #pragma mark - 懒加载
 -(NSMutableArray<CBPeripheral *> *)peripheralArray{
     if (!_peripheralArray) {
