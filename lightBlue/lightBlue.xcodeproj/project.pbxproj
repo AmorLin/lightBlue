@@ -17,6 +17,7 @@
 		32FB9B4E1EEE7C97003FB2C4 /* blueToothManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FB9B4D1EEE7C97003FB2C4 /* blueToothManagerVC.m */; };
 		32FB9B541EEE8BAA003FB2C4 /* blueToothProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FB9B531EEE8BAA003FB2C4 /* blueToothProtocol.m */; };
 		32FB9B581EEE9786003FB2C4 /* blueToothPeripheralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FB9B571EEE9786003FB2C4 /* blueToothPeripheralCell.m */; };
+		4EA83C309100BBF2BE94363F /* libPods-lightBlue.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36883DD6874805F2413E209C /* libPods-lightBlue.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,9 @@
 		32FB9B531EEE8BAA003FB2C4 /* blueToothProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = blueToothProtocol.m; sourceTree = "<group>"; };
 		32FB9B561EEE9786003FB2C4 /* blueToothPeripheralCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blueToothPeripheralCell.h; sourceTree = "<group>"; };
 		32FB9B571EEE9786003FB2C4 /* blueToothPeripheralCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = blueToothPeripheralCell.m; sourceTree = "<group>"; };
+		36883DD6874805F2413E209C /* libPods-lightBlue.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lightBlue.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		449C5E34940C63E72A4B6096 /* Pods-lightBlue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lightBlue.release.xcconfig"; path = "Pods/Target Support Files/Pods-lightBlue/Pods-lightBlue.release.xcconfig"; sourceTree = "<group>"; };
+		7D135A5F1D8352549D2C6AB6 /* Pods-lightBlue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lightBlue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lightBlue/Pods-lightBlue.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EA83C309100BBF2BE94363F /* libPods-lightBlue.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +75,8 @@
 			children = (
 				32ED93791EEE660F0053E211 /* lightBlue */,
 				32ED93781EEE660F0053E211 /* Products */,
+				3CBDA7ADEF53F83291D75146 /* Pods */,
+				4845E885C77BD60CE407845C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -205,6 +212,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3CBDA7ADEF53F83291D75146 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D135A5F1D8352549D2C6AB6 /* Pods-lightBlue.debug.xcconfig */,
+				449C5E34940C63E72A4B6096 /* Pods-lightBlue.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4845E885C77BD60CE407845C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36883DD6874805F2413E209C /* libPods-lightBlue.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -212,9 +236,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32ED938E1EEE660F0053E211 /* Build configuration list for PBXNativeTarget "lightBlue" */;
 			buildPhases = (
+				AA4CCDAE574967BD917075CC /* [CP] Check Pods Manifest.lock */,
 				32ED93731EEE660F0053E211 /* Sources */,
 				32ED93741EEE660F0053E211 /* Frameworks */,
 				32ED93751EEE660F0053E211 /* Resources */,
+				D93F1B1DD2ADF2D2EC0BF92E /* [CP] Embed Pods Frameworks */,
+				F3D1B08269522C385E29D862 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -270,6 +297,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AA4CCDAE574967BD917075CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D93F1B1DD2ADF2D2EC0BF92E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lightBlue/Pods-lightBlue-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3D1B08269522C385E29D862 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lightBlue/Pods-lightBlue-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		32ED93731EEE660F0053E211 /* Sources */ = {
@@ -395,6 +470,7 @@
 		};
 		32ED938F1EEE660F0053E211 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D135A5F1D8352549D2C6AB6 /* Pods-lightBlue.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6H84386C96;
@@ -411,6 +487,7 @@
 		};
 		32ED93901EEE660F0053E211 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 449C5E34940C63E72A4B6096 /* Pods-lightBlue.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6H84386C96;
