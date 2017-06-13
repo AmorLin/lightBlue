@@ -13,7 +13,7 @@
 @interface blueToothProtocol : NSObject
 <UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic,strong) NSArray<CBPeripheral *> *peripheralArray;
+@property (nonatomic,strong) NSMutableArray<CBPeripheral *> *peripheralArray;
 
 @property(nonatomic,strong) blueToothManagerVC *presentVC;
 

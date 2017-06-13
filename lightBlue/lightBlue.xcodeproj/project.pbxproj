@@ -12,6 +12,7 @@
 		32ED938A1EEE660F0053E211 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32ED93881EEE660F0053E211 /* LaunchScreen.storyboard */; };
 		32ED939A1EEE6BAC0053E211 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32ED93991EEE6BAC0053E211 /* mainViewController.m */; };
 		32ED93A11EEE703F0053E211 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32ED93A01EEE703F0053E211 /* AppDelegate.m */; };
+		32F444571EEF8D250063453F /* FDAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F444561EEF8D250063453F /* FDAlertView.m */; };
 		32FB9B4E1EEE7C97003FB2C4 /* blueToothManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FB9B4D1EEE7C97003FB2C4 /* blueToothManagerVC.m */; };
 		32FB9B541EEE8BAA003FB2C4 /* blueToothProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FB9B531EEE8BAA003FB2C4 /* blueToothProtocol.m */; };
 		32FB9B581EEE9786003FB2C4 /* blueToothPeripheralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FB9B571EEE9786003FB2C4 /* blueToothPeripheralCell.m */; };
@@ -30,6 +31,8 @@
 		32ED93A21EEE70770053E211 /* Marco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Marco.h; sourceTree = "<group>"; };
 		32ED93A31EEE70BE0053E211 /* ModelConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelConstants.h; sourceTree = "<group>"; };
 		32ED93A41EEE720B0053E211 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		32F444551EEF8D250063453F /* FDAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDAlertView.h; sourceTree = "<group>"; };
+		32F444561EEF8D250063453F /* FDAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDAlertView.m; sourceTree = "<group>"; };
 		32FB9B4C1EEE7C97003FB2C4 /* blueToothManagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blueToothManagerVC.h; sourceTree = "<group>"; };
 		32FB9B4D1EEE7C97003FB2C4 /* blueToothManagerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = blueToothManagerVC.m; sourceTree = "<group>"; };
 		32FB9B4F1EEE803D003FB2C4 /* UIConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIConstants.h; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 		32ED939D1EEE70150053E211 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				32F444541EEF8CFB0063453F /* view */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -168,6 +172,15 @@
 				32FB9B4F1EEE803D003FB2C4 /* UIConstants.h */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		32F444541EEF8CFB0063453F /* view */ = {
+			isa = PBXGroup;
+			children = (
+				32F444551EEF8D250063453F /* FDAlertView.h */,
+				32F444561EEF8D250063453F /* FDAlertView.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		32FB9B511EEE8B88003FB2C4 /* Model */ = {
@@ -254,6 +267,7 @@
 				32FB9B4E1EEE7C97003FB2C4 /* blueToothManagerVC.m in Sources */,
 				32FB9B581EEE9786003FB2C4 /* blueToothPeripheralCell.m in Sources */,
 				32ED937C1EEE660F0053E211 /* main.m in Sources */,
+				32F444571EEF8D250063453F /* FDAlertView.m in Sources */,
 				32ED93A11EEE703F0053E211 /* AppDelegate.m in Sources */,
 				32FB9B541EEE8BAA003FB2C4 /* blueToothProtocol.m in Sources */,
 			);

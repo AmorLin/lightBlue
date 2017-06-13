@@ -9,73 +9,75 @@
 #import "blueToothManagerVC.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "blueToothProtocol.h"
-
-@interface blueToothManagerVC ()<CBCentralManagerDelegate, CBPeripheralDelegate>
-@property (strong , nonatomic) UITableView *tableView;
+#import "FDAlertView.h"
+@interface blueToothManagerVC ()<CBCentralManagerDelegate, CBPeripheralDelegate>{
+    CBCentralManager *manager;
+    UITableView *tableView;
+}
 @property (strong , nonatomic) blueToothProtocol *protocol;
-@property (nonatomic, strong) CBCentralManager *manager;
-//扫描到的设备后需要添加到数组中持有他.
-@property (copy, nonatomic) NSMutableArray<CBPeripheral *> *peripheralArray;
+@property (strong, nonatomic) NSMutableArray<CBPeripheral *> *peripheralArray;//已扫描到的设备
 
-@property (nonatomic,strong) UIAlertView *alert;
+@property (nonatomic,strong) FDAlertView *alert;
 @end
 
 @implementation blueToothManagerVC
 
--(NSMutableArray<CBPeripheral *> *)peripheralArray{
-    if (!_peripheralArray) {
-        _peripheralArray = [[NSMutableArray alloc]init];
-    }
-    return _peripheralArray;
-}
--(blueToothProtocol *)protocol{
-    if (!_protocol) {
-        _protocol = [[blueToothProtocol alloc]init];
-        _protocol.presentVC = self;
-    }
-    return _protocol;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue() options:nil];
+    
+    manager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue() options:nil];
+    [self setUI];
+}
+
+-(void)setUI{
     [self setTableView];
+    [self setBottomView];
 }
 
 -(void)setTableView{
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 300, 550) style:UITableViewStyleGrouped];
-    _tableView.delegate = self.protocol;
-    _tableView.dataSource = self.protocol;
-    [self.view addSubview:_tableView];
+    tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 300, 550) style:UITableViewStyleGrouped];
+    tableView.delegate = self.protocol;
+    tableView.dataSource = self.protocol;
+    [self.view addSubview:tableView];
+}
+
+-(void)setBottomView{
+    UIButton *refreshButton = [[UIButton alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(tableView.frame) - 40, CGRectGetWidth(tableView.frame), 40)];
+    [refreshButton setTitle:@"重新扫描" forState:UIControlStateNormal];
+    [refreshButton addTarget:self action:@selector(refreshScanPeripheral) forControlEvents:UIControlEventTouchUpInside];
+    [refreshButton setTitleColor:kBlackColor forState:UIControlStateNormal];
+    [refreshButton setBackgroundColor:kLightGrayColor];
+    [self.view addSubview:refreshButton];
 }
 
 //开始查看服务，蓝牙开启
 -(void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
-    switch (central.state) {
-        case CBCentralManagerStateUnknown:
-            NSLog(@">>>蓝牙未知状态");
-            break;
-        case CBCentralManagerStateResetting:
-            NSLog(@">>>蓝牙重启");
-            break;
+    switch (central.state) { 
         case CBCentralManagerStateUnsupported:
-            NSLog(@">>>不支持蓝牙4.0");
+            [self.alert showRemindWithCancelButton:@"不支持蓝牙4.0"];
             break;
         case CBCentralManagerStateUnauthorized:
-            NSLog(@">>>未授权");
+            [self.alert showRemindWithCancelButton:@"未授权"];
             break;
         case CBCentralManagerStatePoweredOff:
-            NSLog(@">>>蓝牙关闭");
+            [self.alert showRemindWithCancelButton:@"蓝牙处于关闭状态，请打开蓝牙"];
             break;
         case CBCentralManagerStatePoweredOn:
             NSLog(@">>>蓝牙打开");
             //蓝牙打开时,再去扫描设备
-            [_manager scanForPeripheralsWithServices:nil options:nil];
+            [manager scanForPeripheralsWithServices:nil options:nil];
             break;
         default:
             break;
     }
+}
+//重新扫描设备
+-(void)refreshScanPeripheral{
+    [self.peripheralArray removeAllObjects];
+    [self.protocol.peripheralArray removeAllObjects];
+    [tableView reloadData];
+    [manager scanForPeripheralsWithServices:nil options:nil];
 }
 
 //查到外设后，停止扫描，连接设备
@@ -84,32 +86,38 @@
      if (![self.peripheralArray containsObject:peripheral]) {
         //发现设备后,需要持有他
         [self.peripheralArray addObject:peripheral];
-        self.protocol.peripheralArray = self.peripheralArray.copy;
-        [self.tableView reloadData];
+        self.protocol.peripheralArray = self.peripheralArray;
+        [tableView reloadData];
     }
 }
  //连接蓝牙设备
 -(void)connectPeripheralWithIndex:(NSInteger)index{
-    [self showRemind:@"正在连接"];
-        CBPeripheral *peripheral=(CBPeripheral *)self.peripheralArray[index];
-        peripheral.delegate = self;
-        [_manager connectPeripheral:peripheral options:nil];
+    CBPeripheral *peripheral=(CBPeripheral *)self.peripheralArray[index];
+    if (peripheral.state == CBPeripheralStateConnected) {
+        [self.alert showRemindWithCancelButton:@"已连接成功"];
+    }else{
+         [self.alert showRemindWithCancelButton:@"正在连接,请稍后...."];
+    }
+    peripheral.delegate = self;
+    [manager connectPeripheral:peripheral options:nil];
 }
 
 //外设连接成功时调用
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     NSLog(@"连接成功");
+    [self.alert dismissAlert];
     //设置外设代理
     peripheral.delegate = self;
     //搜索服务
     [peripheral discoverServices:nil];
-    [self.tableView reloadData];
+    [tableView reloadData];
 }
 
 //外设连接失败时调用
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
     NSLog(@"连接失败,%@", [error localizedDescription]);
-    [_manager connectPeripheral:peripheral options:nil];
+    [manager connectPeripheral:peripheral options:nil];
+    [self.alert dismissAlert];
     
 }
 
@@ -118,7 +126,7 @@
     
     NSLog(@"断开连接");
     NSLog(@"%@",error);
-    [self.tableView reloadData];
+    [tableView reloadData];
 }
 
 //发现服务时调用
@@ -182,34 +190,26 @@
     }
 }
 
-- (void)showRemind:(NSString *)remindStr
-{
-    self.view.userInteractionEnabled = YES;
-    _alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                        message:remindStr
-                                       delegate:nil
-                              cancelButtonTitle:nil
-                              otherButtonTitles:@"确定",nil];
-    [_alert show];
+#pragma mark - 懒加载
+-(NSMutableArray<CBPeripheral *> *)peripheralArray{
+    if (!_peripheralArray) {
+        _peripheralArray = [[NSMutableArray alloc]init];
+    }
+    return _peripheralArray;
+}
+-(blueToothProtocol *)protocol{
+    if (!_protocol) {
+        _protocol = [[blueToothProtocol alloc]init];
+        _protocol.presentVC = self;
+    }
+    return _protocol;
 }
 
-- (void)dismissAlert
-{
-    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
-    
-    self.view.userInteractionEnabled = YES;
-    [_alert dismissWithClickedButtonIndex:_alert.firstOtherButtonIndex animated:YES];
-    _alert = nil;
-}
-
-- (UIAlertView *)alert
-{
+-(FDAlertView *)alert{
+    if (!_alert) {
+        _alert = [[FDAlertView alloc]init];
+    }
     return _alert;
-}
-
-- (void)didShowAlert:(UIAlertView *)alert
-{
-    _alert = alert;
 }
 
 - (void)didReceiveMemoryWarning {

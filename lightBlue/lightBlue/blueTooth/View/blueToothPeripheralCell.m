@@ -19,27 +19,27 @@
 }
 
 -(void)initUI{
-    CGRect PeripheralName_frame = CGRectMake(5, 0, 250, 20);
+    CGRect PeripheralName_frame = CGRectMake(5, 5, 250, 20);
     self.PeripheralNameLabel = [[UILabel alloc]initWithFrame:PeripheralName_frame];
     _PeripheralNameLabel.text =@"设备名称";
     _PeripheralNameLabel.font = kDefaultFont;
-    _PeripheralNameLabel.textColor = kGrayColor;
+    _PeripheralNameLabel.textColor = kBlackColor;
     [self addSubview:_PeripheralNameLabel];
     
     
-    CGRect PeripheralUUID_frame = CGRectMake(5, CGRectGetMaxY(_PeripheralNameLabel.frame), 280, 45);
+    CGRect PeripheralUUID_frame = CGRectMake(5, CGRectGetMaxY(_PeripheralNameLabel.frame)-5, 280, 60);
     _PeripheralUUIDLabel = [[UILabel alloc]initWithFrame:PeripheralUUID_frame];
     _PeripheralUUIDLabel.numberOfLines = 0;
     _PeripheralUUIDLabel.font = kDefaultFont;
-    _PeripheralUUIDLabel.textColor = kGrayColor;
+    _PeripheralUUIDLabel.textColor = kBlackColor;
     _PeripheralUUIDLabel.text = @"UUID........";
     [self addSubview:_PeripheralUUIDLabel];
     
-    CGRect connectStateLabel_frame = CGRectMake(5, CGRectGetMaxY(_PeripheralUUIDLabel.frame), 250, 25);
+    CGRect connectStateLabel_frame = CGRectMake(5, CGRectGetMaxY(_PeripheralUUIDLabel.frame)-5, 250, 25);
     _connectStateLabel = [[UILabel alloc]initWithFrame:connectStateLabel_frame]; 
     _connectStateLabel.text = @"连接状态";
     _connectStateLabel.font = kDefaultFont;
-    _connectStateLabel.textColor = kGrayColor;
+    _connectStateLabel.textColor = kBlackColor;
     [self addSubview:_connectStateLabel];
     
 }

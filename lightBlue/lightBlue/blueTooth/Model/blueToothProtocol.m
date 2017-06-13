@@ -17,9 +17,17 @@
 
 -(NSArray<CBPeripheral *> *)peripheralArray{
     if (!_peripheralArray) {
-        _peripheralArray = [NSArray array];
+        _peripheralArray = [NSMutableArray array];
     }
     return _peripheralArray;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @"设备";
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -34,7 +42,7 @@
     if (per.state == CBPeripheralStateConnected) {
         cell.connectStateLabel.text = @"状态：连接成功";
     }else if (per.state == CBPeripheralStateConnecting){
-        cell.connectStateLabel.text = @"状态：连接中。。。";
+        cell.connectStateLabel.text = @"状态：连接中...";
     }else if (per.state == CBPeripheralStateDisconnected){
         cell.connectStateLabel.text = @"状态：未连接";
     }
@@ -42,7 +50,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 90;
+    return 100;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.peripheralArray.count;
