@@ -1,8 +1,9 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/GoogleMaps/Base/Frameworks" "${PODS_ROOT}/GoogleMaps/Maps/Frameworks"
+ARCHS = $(ARCHS_STANDARD)
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/AMap2DMap" "${PODS_ROOT}/AMapFoundation" "${PODS_ROOT}/GoogleMaps/Base/Frameworks" "${PODS_ROOT}/GoogleMaps/Maps/Frameworks"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/GoogleMaps"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/GoogleMaps"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"z" -framework "Accelerate" -framework "CoreData" -framework "CoreGraphics" -framework "CoreLocation" -framework "CoreText" -framework "GLKit" -framework "GoogleMaps" -framework "GoogleMapsBase" -framework "GoogleMapsCore" -framework "ImageIO" -framework "OpenGLES" -framework "QuartzCore" -framework "SystemConfiguration" -framework "UIKit"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AMap2DMap" "${PODS_ROOT}/Headers/Public/AMapFoundation" "${PODS_ROOT}/Headers/Public/GoogleMaps"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AMap2DMap" -isystem "${PODS_ROOT}/Headers/Public/AMapFoundation" -isystem "${PODS_ROOT}/Headers/Public/GoogleMaps"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"stdc++.6.0.9" -l"z" -framework "AMapFoundationKit" -framework "Accelerate" -framework "CoreData" -framework "CoreGraphics" -framework "CoreLocation" -framework "CoreTelephony" -framework "CoreText" -framework "GLKit" -framework "GoogleMaps" -framework "GoogleMapsBase" -framework "GoogleMapsCore" -framework "ImageIO" -framework "JavaScriptCore" -framework "MAMapKit" -framework "OpenGLES" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.

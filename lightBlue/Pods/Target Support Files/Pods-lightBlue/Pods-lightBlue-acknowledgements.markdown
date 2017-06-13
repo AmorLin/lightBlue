@@ -1,6 +1,16 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## AMap2DMap
+
+Copyright © 2014 AutoNavi. All Rights Reserved.
+
+
+## AMapFoundation
+
+Copyright © 2014 AutoNavi. All Rights Reserved.
+
+
 ## GoogleMaps
 
 Copyright 2017 Google
