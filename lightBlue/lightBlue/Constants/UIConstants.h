@@ -13,6 +13,7 @@
 #define kLightGrayColor [UIColor lightGrayColor]
 #define kGrayColor [UIColor grayColor]
 #define kBlackColor [UIColor blackColor]
+#define kWhiteColor  [UIColor whiteColor]
 
 #define kSmallestFont [UIFont systemFontOfSize:10]
 #define kSmallerFont  [UIFont systemFontOfSize:12]

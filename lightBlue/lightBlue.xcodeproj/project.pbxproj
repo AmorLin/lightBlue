@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		32429B781EEFB80E003CFAFF /* FDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32429B771EEFB80E003CFAFF /* FDBaseViewController.m */; };
+		32E24D631EF0D4E700BF8C38 /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E24D621EF0D4E700BF8C38 /* CustomCalloutView.m */; };
+		32E24D661EF0D68500BF8C38 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E24D651EF0D68500BF8C38 /* CustomAnnotationView.m */; };
 		32ED937C1EEE660F0053E211 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32ED937B1EEE660F0053E211 /* main.m */; };
 		32ED93871EEE660F0053E211 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32ED93861EEE660F0053E211 /* Assets.xcassets */; };
 		32ED938A1EEE660F0053E211 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32ED93881EEE660F0053E211 /* LaunchScreen.storyboard */; };
@@ -23,6 +25,10 @@
 /* Begin PBXFileReference section */
 		32429B761EEFB80E003CFAFF /* FDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDBaseViewController.h; sourceTree = "<group>"; };
 		32429B771EEFB80E003CFAFF /* FDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDBaseViewController.m; sourceTree = "<group>"; };
+		32E24D611EF0D4E700BF8C38 /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
+		32E24D621EF0D4E700BF8C38 /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
+		32E24D641EF0D68500BF8C38 /* CustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
+		32E24D651EF0D68500BF8C38 /* CustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		32ED93771EEE660F0053E211 /* lightBlue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lightBlue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32ED937B1EEE660F0053E211 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32ED93861EEE660F0053E211 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +168,10 @@
 		32ED93961EEE6B490053E211 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				32E24D611EF0D4E700BF8C38 /* CustomCalloutView.h */,
+				32E24D621EF0D4E700BF8C38 /* CustomCalloutView.m */,
+				32E24D641EF0D68500BF8C38 /* CustomAnnotationView.h */,
+				32E24D651EF0D68500BF8C38 /* CustomAnnotationView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,7 +363,9 @@
 			files = (
 				32ED939A1EEE6BAC0053E211 /* mainViewController.m in Sources */,
 				32FB9B4E1EEE7C97003FB2C4 /* blueToothManagerVC.m in Sources */,
+				32E24D661EF0D68500BF8C38 /* CustomAnnotationView.m in Sources */,
 				32FB9B581EEE9786003FB2C4 /* blueToothPeripheralCell.m in Sources */,
+				32E24D631EF0D4E700BF8C38 /* CustomCalloutView.m in Sources */,
 				32ED937C1EEE660F0053E211 /* main.m in Sources */,
 				32F444571EEF8D250063453F /* FDAlertView.m in Sources */,
 				32429B781EEFB80E003CFAFF /* FDBaseViewController.m in Sources */,
