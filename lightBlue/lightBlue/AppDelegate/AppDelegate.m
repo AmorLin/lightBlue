@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "mainViewController.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
 @interface AppDelegate ()
 
 @end

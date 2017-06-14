@@ -10,6 +10,8 @@
 		32429B781EEFB80E003CFAFF /* FDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32429B771EEFB80E003CFAFF /* FDBaseViewController.m */; };
 		32E24D631EF0D4E700BF8C38 /* mapCustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E24D621EF0D4E700BF8C38 /* mapCustomCalloutView.m */; };
 		32E24D661EF0D68500BF8C38 /* mapCustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E24D651EF0D68500BF8C38 /* mapCustomAnnotationView.m */; };
+		32E24D771EF14CBB00BF8C38 /* locationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E24D761EF14CBB00BF8C38 /* locationListViewController.m */; };
+		32E24D7A1EF14CD900BF8C38 /* locationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E24D791EF14CD900BF8C38 /* locationListCell.m */; };
 		32ED937C1EEE660F0053E211 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32ED937B1EEE660F0053E211 /* main.m */; };
 		32ED93871EEE660F0053E211 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32ED93861EEE660F0053E211 /* Assets.xcassets */; };
 		32ED938A1EEE660F0053E211 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32ED93881EEE660F0053E211 /* LaunchScreen.storyboard */; };
@@ -29,6 +31,10 @@
 		32E24D621EF0D4E700BF8C38 /* mapCustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapCustomCalloutView.m; sourceTree = "<group>"; };
 		32E24D641EF0D68500BF8C38 /* mapCustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapCustomAnnotationView.h; sourceTree = "<group>"; };
 		32E24D651EF0D68500BF8C38 /* mapCustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapCustomAnnotationView.m; sourceTree = "<group>"; };
+		32E24D751EF14CBB00BF8C38 /* locationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = locationListViewController.h; sourceTree = "<group>"; };
+		32E24D761EF14CBB00BF8C38 /* locationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = locationListViewController.m; sourceTree = "<group>"; };
+		32E24D781EF14CD900BF8C38 /* locationListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = locationListCell.h; sourceTree = "<group>"; };
+		32E24D791EF14CD900BF8C38 /* locationListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = locationListCell.m; sourceTree = "<group>"; };
 		32ED93771EEE660F0053E211 /* lightBlue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lightBlue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32ED937B1EEE660F0053E211 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32ED93861EEE660F0053E211 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,6 +82,41 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		32E24D711EF14C8600BF8C38 /* locationList */ = {
+			isa = PBXGroup;
+			children = (
+				32E24D721EF14C8600BF8C38 /* Controller */,
+				32E24D731EF14C8600BF8C38 /* Model */,
+				32E24D741EF14C8600BF8C38 /* View */,
+			);
+			path = locationList;
+			sourceTree = "<group>";
+		};
+		32E24D721EF14C8600BF8C38 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				32E24D751EF14CBB00BF8C38 /* locationListViewController.h */,
+				32E24D761EF14CBB00BF8C38 /* locationListViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		32E24D731EF14C8600BF8C38 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		32E24D741EF14C8600BF8C38 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				32E24D781EF14CD900BF8C38 /* locationListCell.h */,
+				32E24D791EF14CD900BF8C38 /* locationListCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		32ED936E1EEE660E0053E211 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +142,7 @@
 				32ED939E1EEE70150053E211 /* Constants */,
 				32ED939C1EEE70080053E211 /* AppDelegate */,
 				32ED93941EEE6B490053E211 /* Main */,
+				32E24D711EF14C8600BF8C38 /* locationList */,
 				32ED93911EEE6B1D0053E211 /* blueTooth */,
 				32ED93861EEE660F0053E211 /* Assets.xcassets */,
 				32ED93881EEE660F0053E211 /* LaunchScreen.storyboard */,
@@ -268,6 +310,7 @@
 		32ED936F1EEE660E0053E211 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = LL;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = wlinlin;
 				TargetAttributes = {
@@ -275,6 +318,11 @@
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 6H84386C96;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -362,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32ED939A1EEE6BAC0053E211 /* mainViewController.m in Sources */,
+				32E24D771EF14CBB00BF8C38 /* locationListViewController.m in Sources */,
 				32FB9B4E1EEE7C97003FB2C4 /* blueToothManagerVC.m in Sources */,
 				32E24D661EF0D68500BF8C38 /* mapCustomAnnotationView.m in Sources */,
 				32FB9B581EEE9786003FB2C4 /* blueToothPeripheralCell.m in Sources */,
@@ -370,6 +419,7 @@
 				32F444571EEF8D250063453F /* FDAlertView.m in Sources */,
 				32429B781EEFB80E003CFAFF /* FDBaseViewController.m in Sources */,
 				32ED93A11EEE703F0053E211 /* AppDelegate.m in Sources */,
+				32E24D7A1EF14CD900BF8C38 /* locationListCell.m in Sources */,
 				32FB9B541EEE8BAA003FB2C4 /* blueToothProtocol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

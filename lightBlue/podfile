@@ -1,3 +1,4 @@
 target 'lightBlue'
 pod 'GoogleMaps'
-pod 'AMap2DMap'
+pod 'AMap3DMap'
+pod 'AMapLocation'
