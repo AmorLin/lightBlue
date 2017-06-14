@@ -10,7 +10,7 @@
 #import "blueToothManagerVC.h"
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
-#import "CustomAnnotationView.h"
+#import "mapCustomAnnotationView.h"
 
 @interface mainViewController ()<MAMapViewDelegate>
 @property (nonatomic,strong) UIPopoverController *popController;
@@ -25,6 +25,7 @@
     pointAnnotation.title = [NSString stringWithFormat:@"经度:%f",pointAnnotation.coordinate.longitude];
     pointAnnotation.subtitle = [NSString stringWithFormat:@"纬度:%f",pointAnnotation.coordinate.latitude]; 
     [_mapView addAnnotation:pointAnnotation];
+ 
 }
 
 - (void)viewDidLoad {
@@ -48,6 +49,7 @@
     _mapView.showsUserLocation = YES;
     _mapView.userTrackingMode = MAUserTrackingModeFollow;
     _mapView.delegate = self;
+     
 }
 
 -(void)setBlueToothConnection{
@@ -63,13 +65,13 @@
     if ([annotation isKindOfClass:[MAPointAnnotation class]])
     {
         static NSString *reuseIndetifier = @"annotationReuseIndetifier";
-        CustomAnnotationView *annotationView = (CustomAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
+        mapCustomAnnotationView *annotationView = (mapCustomAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
         if (annotationView == nil)
         {
-            annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIndetifier];
+            annotationView = [[mapCustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIndetifier];
         }
 //        annotationView.image = [UIImage imageNamed:@"restaurant"];
-        
+        annotationView.imageName = @"boat";
         // 设置为NO，用以调用自定义的calloutView
         annotationView.canShowCallout = NO;
         

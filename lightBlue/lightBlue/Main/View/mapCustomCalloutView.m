@@ -1,12 +1,12 @@
 //
-//  CustomCalloutView.m
+//  mapCustomCalloutView.m
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/14.
 //  Copyright © 2017年 wlinlin. All rights reserved.
 //
 
-#import "CustomCalloutView.h"
+#import "mapCustomCalloutView.h"
 #define kArrorHeight        10
 #define kPortraitMargin     5
 #define kPortraitWidth      70
@@ -14,7 +14,7 @@
 
 #define kTitleWidth         120
 #define kTitleHeight        20
-@interface CustomCalloutView ()
+@interface mapCustomCalloutView ()
 
 @property (nonatomic, strong) UIImageView *portraitView;
 @property (nonatomic, strong) UILabel *subtitleLabel;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation CustomCalloutView
+@implementation mapCustomCalloutView
 
 - (void)drawRect:(CGRect)rect
 {
@@ -37,7 +37,7 @@
 {
     
     CGContextSetLineWidth(context, 2.0);
-    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.8].CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.6].CGColor);
     
     [self getDrawPath:context];
     CGContextFillPath(context);
@@ -82,17 +82,17 @@
     self.portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(kPortraitMargin, kPortraitMargin, kPortraitWidth, kPortraitHeight)];
     
     self.portraitView.backgroundColor = [UIColor blackColor];
-//    [self addSubview:self.portraitView];
+    [self addSubview:self.portraitView];
     
     // 添加标题，即商户名
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPortraitMargin * 2, kPortraitMargin, kTitleWidth, kTitleHeight)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPortraitMargin * 2 + kPortraitWidth, kPortraitMargin, kTitleWidth, kTitleHeight)];
     self.titleLabel.font = kDefaultFont;
     self.titleLabel.textColor = kWhiteColor;
     self.titleLabel.text = @"titletitletitletitle";
     [self addSubview:self.titleLabel];
     
     // 添加副标题，即商户地址
-    self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPortraitMargin * 2, kPortraitMargin * 2 + kTitleHeight, kTitleWidth, kTitleHeight)];
+    self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPortraitMargin * 2 + kPortraitWidth, kPortraitMargin * 2 + kTitleHeight, kTitleWidth, kTitleHeight)];
     self.subtitleLabel.font = kDefaultFont;
     self.subtitleLabel.textColor = kWhiteColor;
     self.subtitleLabel.text = @"subtitleLabelsubtitleLabelsubtitleLabel";

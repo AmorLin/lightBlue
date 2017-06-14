@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "mainViewController.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
 @interface AppDelegate ()
 
 @end
@@ -18,13 +19,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [UINavigationBar appearance].tintColor = kBlackColor;
     
-    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    //高德地图
+    [AMapServices sharedServices].apiKey = @"fd9c03ba5d9eee65b330d5b1f8eec8b3";
     
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     //设置窗口的根控制器
     mainViewController *mainVC = [[mainViewController alloc]init];
     UINavigationController *mainNC= [[UINavigationController alloc]initWithRootViewController:mainVC];
     self.window.rootViewController = mainNC;
-    
+   
     [self.window makeKeyAndVisible];
     
     return YES;
