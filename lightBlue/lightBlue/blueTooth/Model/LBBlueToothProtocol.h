@@ -1,5 +1,5 @@
 //
-//  blueToothProtocol.h
+//  LBBlueToothProtocol.h
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/12.
@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
-#import "blueToothManagerVC.h"
+#import "LBBlueToothManagerVC.h"
 
-@interface blueToothProtocol : NSObject
+@interface LBBlueToothProtocol : NSObject
 <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) NSMutableArray<CBPeripheral *> *peripheralArray;
 
-@property(nonatomic,strong) blueToothManagerVC *presentVC;
+@property(nonatomic,strong) LBBlueToothManagerVC *presentVC;
 
 @end

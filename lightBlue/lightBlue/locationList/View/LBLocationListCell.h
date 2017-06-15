@@ -1,5 +1,5 @@
 //
-//  locationListCell.h
+//  LBLocationListCell.h
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface locationListCell : UITableViewCell
+@interface LBLocationListCell : UITableViewCell
 //纬度
 @property (nonatomic,strong) UILabel *longitudeLable;
 //经度

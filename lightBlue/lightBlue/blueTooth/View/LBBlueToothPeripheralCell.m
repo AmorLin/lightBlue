@@ -1,14 +1,14 @@
 //
-//  blueToothPeripheralCell.m
+//  LBBlueToothPeripheralCell.m
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/12.
 //  Copyright © 2017年 wlinlin. All rights reserved.
 //
 
-#import "blueToothPeripheralCell.h"
+#import "LBBlueToothPeripheralCell.h"
 
-@implementation blueToothPeripheralCell
+@implementation LBBlueToothPeripheralCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

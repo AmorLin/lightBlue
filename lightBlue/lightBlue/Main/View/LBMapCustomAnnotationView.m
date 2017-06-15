@@ -1,26 +1,27 @@
 //
-//  mapCustomAnnotationView.m
+//  LBMapCustomAnnotationView.m
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/14.
 //  Copyright © 2017年 wlinlin. All rights reserved.
 //
 
-#import "mapCustomAnnotationView.h"
+#import "LBMapCustomAnnotationView.h"
 #define kCalloutWidth       200.0
 #define kCalloutHeight      70.0
 
-@interface mapCustomAnnotationView ()
+@interface LBMapCustomAnnotationView ()
 
-@property (nonatomic, strong, readwrite) mapCustomCalloutView *calloutView;
+@property (nonatomic, strong, readwrite) LBMapCustomCalloutView *calloutView;
 
 @end
 
-@implementation mapCustomAnnotationView
+@implementation LBMapCustomAnnotationView
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     if (self.selected == selected)
+        
     {
         return;
     }
@@ -29,7 +30,7 @@
     {
         if (self.calloutView == nil)
         {
-            self.calloutView = [[mapCustomCalloutView alloc] initWithFrame:CGRectMake(0, 0, kCalloutWidth, kCalloutHeight)];
+            self.calloutView = [[LBMapCustomCalloutView alloc] initWithFrame:CGRectMake(0, 0, kCalloutWidth, kCalloutHeight)];
             self.calloutView.center = CGPointMake(CGRectGetWidth(self.bounds) / 2.f + self.calloutOffset.x,
                                                   -CGRectGetHeight(self.calloutView.bounds) / 2.f + self.calloutOffset.y);
         }

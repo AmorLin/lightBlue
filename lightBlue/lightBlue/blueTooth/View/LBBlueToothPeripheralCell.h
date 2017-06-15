@@ -1,5 +1,5 @@
 //
-//  blueToothPeripheralCell.h
+//  LBBlueToothPeripheralCell.h
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface blueToothPeripheralCell : UITableViewCell
+@interface LBBlueToothPeripheralCell : UITableViewCell
 
 @property (nonatomic,strong) UILabel *PeripheralNameLabel;//设备名称
 @property (nonatomic,strong) UILabel *PeripheralUUIDLabel;//设备的UUID

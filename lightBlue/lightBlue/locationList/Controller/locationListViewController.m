@@ -1,20 +1,20 @@
 //
-//  locationListViewController.m
+//  LBLocationListViewController.m
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/14.
 //  Copyright © 2017年 wlinlin. All rights reserved.
 //
 
-#import "locationListViewController.h"
-#import "locationListCell.h"
-@interface locationListViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "LBLocationListViewController.h"
+#import "LBLocationListCell.h"
+@interface LBLocationListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)UITableView *tableView;
 
 @end
 
-@implementation locationListViewController
+@implementation LBLocationListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,8 +32,8 @@
 -(void)initData{
     self.locationArray = @[
                            @{@"longitude":@39.989631,@"latitude":@116.481018},
-                           @{@"longitude":@39.989631,@"latitude":@115.481018},
-                           @{@"longitude":@39.989631,@"latitude":@114.481018}
+                           @{@"longitude":@39.989631,@"latitude":@116.581018},
+                           @{@"longitude":@39.989631,@"latitude":@116.681018}
                            ];
     
 }
@@ -47,9 +47,9 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    locationListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"locationList"];
+    LBLocationListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"locationList"];
     if (cell == nil) {
-        cell = [[locationListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"locationList"];
+        cell = [[LBLocationListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"locationList"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.longitudeLable.text = [NSString stringWithFormat:@"纬度:%@",self.locationArray[indexPath.row][@"longitude"]];

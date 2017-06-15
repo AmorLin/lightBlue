@@ -1,5 +1,5 @@
 //
-//  mapCustomCalloutView.h
+//  LBMapCustomCalloutView.h
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface mapCustomCalloutView : UIView
+@interface LBMapCustomCalloutView : UIView
 
 @property (nonatomic, strong) UIImage *image; //商户图
 @property (nonatomic, copy) NSString *title; //商户名

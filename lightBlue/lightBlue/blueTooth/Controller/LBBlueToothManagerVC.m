@@ -1,26 +1,26 @@
 //
-//  blueToothManagerVC.m
+//  LBBlueToothManagerVC.m
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/12.
 //  Copyright © 2017年 wlinlin. All rights reserved.
 //
 
-#import "blueToothManagerVC.h"
+#import "LBBlueToothManagerVC.h"
 #import <CoreBluetooth/CoreBluetooth.h>
-#import "blueToothProtocol.h"
+#import "LBBlueToothProtocol.h"
 #import "FDAlertView.h"
-@interface blueToothManagerVC ()<CBCentralManagerDelegate, CBPeripheralDelegate>{
+@interface LBBlueToothManagerVC ()<CBCentralManagerDelegate, CBPeripheralDelegate>{
     CBCentralManager *manager;
     UITableView *tableView;
 }
 
-@property (strong , nonatomic) blueToothProtocol *protocol;
+@property (strong , nonatomic) LBBlueToothProtocol *protocol;
 @property (strong, nonatomic) NSMutableArray<CBPeripheral *> *peripheralArray;//已扫描到的设备
 @property (nonatomic,strong) FDAlertView *alert;
 @end
 
-@implementation blueToothManagerVC
+@implementation LBBlueToothManagerVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -208,9 +208,9 @@
     }
     return _peripheralArray;
 }
--(blueToothProtocol *)protocol{
+-(LBBlueToothProtocol *)protocol{
     if (!_protocol) {
-        _protocol = [[blueToothProtocol alloc]init];
+        _protocol = [[LBBlueToothProtocol alloc]init];
         _protocol.presentVC = self;
     }
     return _protocol;

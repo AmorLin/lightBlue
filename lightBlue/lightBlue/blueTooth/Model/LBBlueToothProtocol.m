@@ -1,19 +1,19 @@
 //
-//  blueToothProtocol.m
+//  LBBlueToothProtocol.m
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/12.
 //  Copyright © 2017年 wlinlin. All rights reserved.
 //
 
-#import "blueToothProtocol.h" 
-#import "blueToothPeripheralCell.h"
-@interface blueToothProtocol()
+#import "LBBlueToothProtocol.h"
+#import "LBBlueToothPeripheralCell.h"
+@interface LBBlueToothProtocol()
 
 
 @end
 
-@implementation blueToothProtocol
+@implementation LBBlueToothProtocol
 
 -(NSArray<CBPeripheral *> *)peripheralArray{
     if (!_peripheralArray) {
@@ -27,9 +27,9 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    blueToothPeripheralCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IsConnect"];
+    LBBlueToothPeripheralCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IsConnect"];
     if (cell == nil) {
-        cell = [[blueToothPeripheralCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IsConnect"];
+        cell = [[LBBlueToothPeripheralCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IsConnect"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     CBPeripheral *per=(CBPeripheral *)self.peripheralArray[indexPath.row];

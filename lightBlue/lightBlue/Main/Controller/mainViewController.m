@@ -7,18 +7,18 @@
 //
 
 #import "mainViewController.h"
-#import "blueToothManagerVC.h"
+#import "LBBlueToothManagerVC.h"
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
-#import "mapCustomAnnotationView.h"
-#import "locationListViewController.h"
+#import "LBMapCustomAnnotationView.h"
+#import "LBLocationListViewController.h"
 
 @interface mainViewController ()<MAMapViewDelegate,locationListViewControllerDelegate>{
     MAPointAnnotation *pointAnnotation;
 }
 @property (nonatomic,strong) UIPopoverController *popController;
 @property (nonatomic,strong) MAMapView *mapView;
-@property (nonatomic,strong) locationListViewController *locationListVC;
+@property (nonatomic,strong) LBLocationListViewController *locationListVC;
 @end
 
 @implementation mainViewController
@@ -38,7 +38,7 @@
 }
 
 -(void)initLocationListView{
-    locationListViewController *listVC = [[locationListViewController alloc]init];
+    LBLocationListViewController *listVC = [[LBLocationListViewController alloc]init];
     listVC.view.frame = CGRectMake(0, 64, 200, kScreenHeight - 64);
     listVC.delegate = self;
     [self.view addSubview:listVC.view];
@@ -56,10 +56,13 @@
      ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
     _mapView.showsUserLocation = YES;
     _mapView.userTrackingMode = MAUserTrackingModeFollow;
+    MAUserLocationRepresentation *r = [[MAUserLocationRepresentation alloc] init];
+    [self.mapView updateUserLocationRepresentation:r];
 }
 
 -(void)setBlueToothConnection{
-    blueToothManagerVC *managerVC = [[blueToothManagerVC alloc]init];
+    LBBlueToothManagerVC *managerVC = [[LBBlueToothManagerVC
+                                        alloc]init];
     self.popController = [[UIPopoverController alloc]initWithContentViewController:managerVC];
     self.popController.popoverContentSize = CGSizeMake(300, 550);
     //显示
@@ -84,10 +87,10 @@
     if ([annotation isKindOfClass:[MAPointAnnotation class]])
     {
         static NSString *reuseIndetifier = @"annotationReuseIndetifier";
-        mapCustomAnnotationView *annotationView = (mapCustomAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
+        LBMapCustomAnnotationView *annotationView = (LBMapCustomAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
         if (annotationView == nil)
         {
-            annotationView = [[mapCustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIndetifier];
+            annotationView = [[LBMapCustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIndetifier];
         }
 //        annotationView.image = [UIImage imageNamed:@"restaurant"];
         annotationView.imageName = @"boat";

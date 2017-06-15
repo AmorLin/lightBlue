@@ -1,5 +1,5 @@
 //
-//  mapCustomAnnotationView.h
+//  LBMapCustomAnnotationView.h
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/14.
@@ -7,11 +7,11 @@
 //
 
 #import <MAMapKit/MAMapKit.h>
-#import "mapCustomCalloutView.h"
+#import "LBMapCustomCalloutView.h"
 
-@interface mapCustomAnnotationView : MAPinAnnotationView
+@interface LBMapCustomAnnotationView : MAPinAnnotationView
 
-@property (nonatomic, readonly) mapCustomCalloutView *calloutView;
+@property (nonatomic, readonly) LBMapCustomCalloutView *calloutView;
 
 @property (nonatomic, copy) NSString *imageName;
 @end

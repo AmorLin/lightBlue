@@ -1,12 +1,12 @@
 //
-//  mapCustomCalloutView.m
+//  LBMapCustomCalloutView.m
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/14.
 //  Copyright © 2017年 wlinlin. All rights reserved.
 //
 
-#import "mapCustomCalloutView.h"
+#import "LBMapCustomCalloutView.h"
 #define kArrorHeight        10
 #define kPortraitMargin     5
 #define kPortraitWidth      70
@@ -14,7 +14,7 @@
 
 #define kTitleWidth         120
 #define kTitleHeight        20
-@interface mapCustomCalloutView ()
+@interface LBMapCustomCalloutView ()
 
 @property (nonatomic, strong) UIImageView *portraitView;
 @property (nonatomic, strong) UILabel *subtitleLabel;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation mapCustomCalloutView
+@implementation LBMapCustomCalloutView
 
 - (void)drawRect:(CGRect)rect
 {

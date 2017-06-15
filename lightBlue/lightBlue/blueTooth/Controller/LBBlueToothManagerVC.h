@@ -1,5 +1,5 @@
 //
-//  blueToothManagerVC.h
+//  LBBlueToothManagerVC.h
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface blueToothManagerVC : FDBaseViewController
+@interface LBBlueToothManagerVC : FDBaseViewController
 
 -(void)connectPeripheralWithIndex:(NSInteger)index;
 

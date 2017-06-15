@@ -1,5 +1,5 @@
 //
-//  locationListViewController.h
+//  LBLocationListViewController.h
 //  lightBlue
 //
 //  Created by wlinlin on 2017/6/14.
@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-@class locationListViewController;
+@class LBLocationListViewController;
 @protocol locationListViewControllerDelegate<NSObject>
 
 -(void)updateMap:(NSDictionary *)dict;
 
 @end
 
-@interface locationListViewController : UIViewController
+@interface LBLocationListViewController : UIViewController
 
 @property (nonatomic,strong) NSArray *locationArray;
 @property (nonatomic,weak) id<locationListViewControllerDelegate> delegate;
