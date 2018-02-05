@@ -1,26 +1,32 @@
 PODS:
-  - AMap3DMap (5.0.0):
-    - AMapFoundation (~> 1.3)
-  - AMapFoundation (1.4.0)
-  - AMapLocation (2.4.0):
+  - AMap3DMap (5.7.0):
     - AMapFoundation (~> 1.4)
-  - GoogleMaps (2.2.0):
-    - GoogleMaps/Maps (= 2.2.0)
-  - GoogleMaps/Base (2.2.0)
-  - GoogleMaps/Maps (2.2.0):
+  - AMapFoundation (1.4.3)
+  - AMapLocation (2.6.0):
+    - AMapFoundation (~> 1.4)
+  - BabyBluetooth (0.7.0)
+  - GoogleMaps (2.5.0):
+    - GoogleMaps/Maps (= 2.5.0)
+  - GoogleMaps/Base (2.5.0)
+  - GoogleMaps/Maps (2.5.0):
     - GoogleMaps/Base
+  - SVProgressHUD (2.2.2)
 
 DEPENDENCIES:
   - AMap3DMap
   - AMapLocation
+  - BabyBluetooth (~> 0.7.0)
   - GoogleMaps
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
-  AMap3DMap: 4d0a53d0e57c7c758560225dfdaf593b306bd468
-  AMapFoundation: 458974f46a39df8407fd818ab83d2630d494c726
-  AMapLocation: 47b62b5381a66e4d0c2931b70ffde72682427896
-  GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
+  AMap3DMap: 97afc57b88628237d916991ac31795eb7bde3f63
+  AMapFoundation: 973682cfe60b92efd73a8ef8f1144fa0fa8e1296
+  AMapLocation: 55116a2c8956eab7550cbb56e989aa5cdcc424e3
+  BabyBluetooth: d50758aecf24d4a0ab9271d69f0f116d6bee51c9
+  GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
 
-PODFILE CHECKSUM: c767483f99757b19f7d9b8e9323e42291441c420
+PODFILE CHECKSUM: cb5d6b1e00400c8226a1dd50bc75cfe611ce9cc8
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.4.0

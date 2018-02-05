@@ -135,6 +135,9 @@ extern NSString * const kMAMapLayerCameraDegreeKey;
 ///设置实时交通颜色,key为 MATrafficStatus
 @property (nonatomic, copy) NSDictionary <NSNumber *, UIColor *> *trafficStatus;
 
+///设置实时交通线宽系数，默认线宽系数为0.8，范围为[0 - 1] (since 5.3.0)
+@property (nonatomic, assign) CGFloat trafficRatio;
+
 ///是否支持单击地图获取POI信息(默认为YES), 对应的回调是 -(void)mapView:(MAMapView *) didTouchPois:(NSArray *)
 @property (nonatomic, assign) BOOL touchPOIEnabled;
 
@@ -177,8 +180,11 @@ extern NSString * const kMAMapLayerCameraDegreeKey;
 ///停止/开启 OpenGLES绘制, 默认NO. 对应回调是 - (void)mapView:(MAMapView *) didChangeOpenGLESDisabled:(BOOL)
 @property (nonatomic, assign) BOOL openGLESDisabled;
 
-///地图的视图锚点。坐标系归一化，(0, 0)为MAMapView左上角，(1, 1)为右下角。默认为(0.5, 0.5)，即当前地图的视图中心 since V5.0.0
-@property (nonatomic) CGPoint screenAnchor;
+///地图的视图锚点。坐标系归一化，(0, 0)为MAMapView左上角，(1, 1)为右下角。默认为(0.5, 0.5)，即当前地图的视图中心 （since 5.0.0）
+@property (nonatomic, assign) CGPoint screenAnchor;
+
+///地图渲染的runloop mode，默认为NSRunLoopCommonModes。如果是和UIScrollView一起使用且不希望地图在scrollView拖动时渲染，请设置此值为NSDefaultRunLoopMode。（since 5.1.0）
+@property (nonatomic, copy) NSRunLoopMode runLoopMode;
 
 /**
  * @brief 设定当前地图的经纬度范围，该范围可能会被调整为适合地图窗口显示的范围
@@ -358,11 +364,28 @@ extern NSString * const kMAMapLayerCameraDegreeKey;
  */
 - (void)clearDisk;
 
+/**
+ * @brief 重新加载内部纹理，在纹理被错误释放时可以执行此方法。（since 5.4.0）
+ */
+- (void)reloadInternalTexture;
+
+/**
+ * @brief 获取地图审图号。如果启用了“自定义样式”功能(customMapStyleEnabled 为 YES)，则返回nil。（since 5.4.0）
+ * @return 地图审图号
+ */
+- (NSString *)mapContentApprovalNumber;
+
+/**
+ * @brief 获取卫星图片审图号。（since 5.4.0）
+ * @return 卫星图片审图号
+ */
+- (NSString *)satelliteImageApprovalNumber;
+
 @end
 
 @interface MAMapView (Annotation)
 
-///所有添加的标注
+///所有添加的标注, 注意从5.3.0开始返回数组内不再包含定位蓝点userLocation
 @property (nonatomic, readonly) NSArray *annotations;
 
 ///处于选中状态的标注数据数据(其count == 0 或 1)
@@ -371,8 +394,8 @@ extern NSString * const kMAMapLayerCameraDegreeKey;
 ///annotation 可见区域
 @property (nonatomic, readonly) CGRect annotationVisibleRect;
 
-///是否允许对annotationView根据zIndex进行排序，默认为YES 注意：当annotationView数量比较大时可能会引起性能问题，可以设置此属性为NO
-@property (nonatomic, assign) BOOL allowsAnnotationViewSorting;
+///是否允许对annotationView根据zIndex进行排序，默认为NO 注意：如果设置为YES，慎重重载MAAnnoationView的willMoveToSuperview:，内部排序时会调用removeFromSuperView. 注：从5.3.0版本开启此属性废弃，如果添加的annotationView有zIndex不为0的，则自动开启为YES，否则为NO。删除所有annotation后会重置。zIndex属性只有在viewForAnnotation或者didAddAnnotationViews回调中设置有效。
+@property (nonatomic, assign) BOOL allowsAnnotationViewSorting __attribute((deprecated("已废弃 since 5.3.0")));
 
 /**
  * @brief 向地图窗口添加标注，需要实现MAMapViewDelegate的-mapView:viewForAnnotation:函数来生成标注对应的View
@@ -465,7 +488,7 @@ extern NSString * const kMAMapLayerCameraDegreeKey;
 ///用户位置精度圈 对应的overlay
 @property (nonatomic, readonly) MACircle *userLocationAccuracyCircle;
 
-///定位用户位置的模式
+///定位用户位置的模式, 注意：在follow模式下，设置地图中心点、设置可见区域、滑动手势、选择annotation操作会取消follow模式，并触发 - (void)mapView:(MAMapView *)mapView didChangeUserTrackingMode:(MAUserTrackingMode)mode animated:(BOOL)animated;
 @property (nonatomic) MAUserTrackingMode userTrackingMode;
 
 ///当前位置再地图中是否可见
@@ -670,10 +693,22 @@ extern NSString * const kMAMapLayerCameraDegreeKey;
 @property (nonatomic, assign) BOOL customMapStyleEnabled;
 
 /**
- * @brief 自定义地图样式, 目前仅支持自定义标准类型. 默认不生效，调用mapCustomEnable=YES使生效.
+ * @brief 自定义地图样式, 目前仅支持自定义标准类型. 默认不生效，调用customMapStyleEnabled=YES使生效.
  * @param customJson 自定义的JSON格式数据.
  */
-- (void)setCustomMapStyle:(NSData*)customJson;
+- (void)setCustomMapStyle:(NSData *)customJson __attribute((deprecated("已废弃, 请使用 setCustomMapStyleWithWebData: since 5.7.0")));
+
+/**
+ * @brief 根据web导出数据设置地图样式, 目前仅支持自定义标准类型. 默认不生效，调用customMapStyleEnabled=YES使生效. since 5.2.0
+ * @param data 高德web端工具导出的地图样式数据.
+ */
+- (void)setCustomMapStyleWithWebData:(NSData *)data;
+
+/**
+ * @brief 设置自定义纹理. since 5.7.0
+ * @param customTextureResourcePath 自定义纹理文件路径.
+ */
+- (void)setCustomTextureResourcePath:(NSString *)customTextureResourcePath;
 
 @end
 
@@ -750,7 +785,16 @@ extern NSString * const kMAMapLayerCameraDegreeKey;
 - (void)mapViewDidFailLoadingMap:(MAMapView *)mapView withError:(NSError *)error;
 
 /**
- * @brief 根据anntation生成对应的View
+ * @brief 根据anntation生成对应的View。
+ 
+ 注意：
+ 1、5.1.0后由于定位蓝点增加了平滑移动功能，如果在开启定位的情况先添加annotation，需要在此回调方法中判断annotation是否为MAUserLocation，从而返回正确的View。
+ if ([annotation isKindOfClass:[MAUserLocation class]]) {
+    return nil;
+ }
+ 
+ 2、请不要在此回调中对annotation进行select和deselect操作，此时annotationView还未添加到mapview。
+ 
  * @param mapView 地图View
  * @param annotation 指定的标注
  * @return 生成的标注View
@@ -806,7 +850,7 @@ extern NSString * const kMAMapLayerCameraDegreeKey;
 - (void)mapView:(MAMapView *)mapView didFailToLocateUserWithError:(NSError *)error;
 
 /**
- * @brief 拖动annotation view时view的状态变化，ios3.2以后支持
+ * @brief 拖动annotation view时view的状态变化
  * @param mapView 地图View
  * @param view annotation view
  * @param newState 新状态
@@ -844,6 +888,13 @@ extern NSString * const kMAMapLayerCameraDegreeKey;
  * @param view calloutView所属的annotationView
  */
 - (void)mapView:(MAMapView *)mapView didAnnotationViewCalloutTapped:(MAAnnotationView *)view;
+
+/**
+ * @brief 标注view被点击时，触发改回调。（since 5.7.0）
+ * @param mapView 地图的view
+ * @param view annotationView
+ */
+- (void)mapView:(MAMapView *)mapView didAnnotationViewTapped:(MAAnnotationView *)view;
 
 /**
  * @brief 当userTrackingMode改变时，调用此接口

@@ -12,4 +12,8 @@
 #define strform(x) [NSString stringWithFormat:@"%@",x] 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight  [UIScreen mainScreen].bounds.size.height
+
+#define KPeripheral         @"peripheral"
+#define KRSSI               @"RSSI"
+#define KAdvertisementData  @"advertisementData"
 #endif /* Marco_h */

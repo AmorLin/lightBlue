@@ -85,8 +85,8 @@
 		32E24D711EF14C8600BF8C38 /* locationList */ = {
 			isa = PBXGroup;
 			children = (
+				3E4D64552021AD2700E5F92D /* Model */,
 				32E24D721EF14C8600BF8C38 /* Controller */,
-				32E24D731EF14C8600BF8C38 /* Model */,
 				32E24D741EF14C8600BF8C38 /* View */,
 			);
 			path = locationList;
@@ -99,13 +99,6 @@
 				32E24D761EF14CBB00BF8C38 /* locationListViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		32E24D731EF14C8600BF8C38 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		32E24D741EF14C8600BF8C38 /* View */ = {
@@ -164,7 +157,7 @@
 		32ED93911EEE6B1D0053E211 /* blueTooth */ = {
 			isa = PBXGroup;
 			children = (
-				32FB9B511EEE8B88003FB2C4 /* Model */,
+				32FB9B511EEE8B88003FB2C4 /* Protocol */,
 				32ED93921EEE6B1D0053E211 /* Controller */,
 				32ED93931EEE6B1D0053E211 /* View */,
 			);
@@ -255,13 +248,13 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		32FB9B511EEE8B88003FB2C4 /* Model */ = {
+		32FB9B511EEE8B88003FB2C4 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
 				32FB9B521EEE8BAA003FB2C4 /* LBBlueToothProtocol.h */,
 				32FB9B531EEE8BAA003FB2C4 /* LBBlueToothProtocol.m */,
 			);
-			path = Model;
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		3CBDA7ADEF53F83291D75146 /* Pods */ = {
@@ -271,6 +264,13 @@
 				449C5E34940C63E72A4B6096 /* Pods-lightBlue.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3E4D64552021AD2700E5F92D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4845E885C77BD60CE407845C /* Frameworks */ = {
@@ -316,7 +316,7 @@
 				TargetAttributes = {
 					32ED93761EEE660F0053E211 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 6H84386C96;
+						DevelopmentTeam = X342LX7QRW;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -363,13 +363,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lightBlue-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D93F1B1DD2ADF2D2EC0BF92E /* [CP] Embed Pods Frameworks */ = {
@@ -393,9 +396,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-lightBlue/Pods-lightBlue-resources.sh",
+				"${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -535,13 +545,13 @@
 			baseConfigurationReference = 7D135A5F1D8352549D2C6AB6 /* Pods-lightBlue.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6H84386C96;
+				DEVELOPMENT_TEAM = X342LX7QRW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/wlinlin/Desktop/lightBlue/lightBlue/lightBlue/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/lin/Desktop/lightBlue/lightBlue/lightBlue/lightBlue/PrefixHeader.pch;
 				INFOPLIST_FILE = lightBlue/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "llwang-ideabinder.com.lightBlue";
+				PRODUCT_BUNDLE_IDENTIFIER = "llwang-ideabinder.com.lightBlue-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -552,13 +562,13 @@
 			baseConfigurationReference = 449C5E34940C63E72A4B6096 /* Pods-lightBlue.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6H84386C96;
+				DEVELOPMENT_TEAM = X342LX7QRW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/wlinlin/Desktop/lightBlue/lightBlue/lightBlue/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/lin/Desktop/lightBlue/lightBlue/lightBlue/lightBlue/PrefixHeader.pch;
 				INFOPLIST_FILE = lightBlue/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "llwang-ideabinder.com.lightBlue";
+				PRODUCT_BUNDLE_IDENTIFIER = "llwang-ideabinder.com.lightBlue-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
